@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>My Tasks</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!--<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>-->
+	<!--<script src="https://cdn.jsdelivr.net/npm/numeraljs/languages/tr.js"></script>-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/handsontable@8.2.0/dist/handsontable.full.min.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/handsontable@8.2.0/dist/handsontable.full.min.css" rel="stylesheet"
+		media="screen">
+	<link href="./stylesheet.css" rel="stylesheet">
+	
+	
+</head>
+
+<body>
+	<h1>
+		<center>All Notes</center>
+	</h1>
+
+	<!-- container to wrap the data-grid -->
+	<div class="loading">
+		<div class='uil-ring-css' style='transform:scale(0.79);'>
+			<div></div>
+			<h5 style="display:flex; justify-content: center; align-items: center; text-align: center; width: 200px; margin-top: 80px;">Lütfen Bekleyin.</h5>
+		</div>
+	
+	</div>
+
+	<div class="container">
+		
+		<div class="container" style="display: flex; align-items: center; justify-content: center;">
+			<button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect newNoteButton" data-toggle="modal"
+				data-target="#registerModal" style="width: 150px; border: none; background-color: chocolate; color: whitesmoke;">New Note</button>
+		</div>
+		<br>
+		
+		<div style="display: flex;">
+			<input id="search_field" type="search" placeholder="Search" style="height: 40px;"><br><br>
+			<button style="margin-left: 10px;" id="nextFindBtn" class="nextFindBtn">Sonraki</button>
+			<h6 style="margin-top: 10px; margin-left: 5px;" id="numberOfMatchRecord"></h6><br>
+		</div>
+		<p id="tableInfo" style="font-size: large;"></p>
+		<div class="handsontable-container" id="grid-table"></div>
+		<span style="display: flex; justify-content: center;" id="tableInfoSpan"></span>
+		<br><br>
+		<div class="container" style="display: flex; align-items: center; justify-content: center;">
+			<button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect btnSaveChanges" id="btnSaveChanges"
+				style="width: 150px; border: none; background-color: chocolate; color: whitesmoke;">Save as Changes</button>
+		</div>
+
+		<div class="modal registerModal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title modal-title-centered" id="myModalLabel">Note Insert</h4>
+						<p id="popup-info-period-msg"></p>
+					</div>
+					<form action="{{ route('register') }}" method="POST">
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-3"><label for="noteHeader">Not Header:</label></div>
+									<div class="col-md-9"><input type="text" name="noteHeader" class="form-control" id="noteHeader"
+											placeholder="input your note header..."></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-3"><label for="noteDetail">Not Content:</label></div>
+									<div class="col-md-9"><input type="noteDetail" name="noteDetail" class="form-control"
+											id="noteDetail" placeholder="input your note content..."></div>
+								</div>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary btn-add">Insert Note</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="methods.js"></script>
+	<script src="Prototypes.js"></script>
+	<script src="index.js"></script>
+	
+	
+</body>
+
+</html>
