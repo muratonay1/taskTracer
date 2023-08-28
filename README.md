@@ -12,4 +12,4 @@
 
 ![1](https://github.com/muratonay1/taskTracer/assets/34923740/5069cc39-9ae4-411d-adb6-699568f950cb)
 
-- Başlık ve İçeriği hücre içine girerek güncelleyebilir ve değişiklikleri kaydetek için Save Changes butonu ile kaydedebilirsiniz.
+- Başlık ve İçeriği hücre içine girerek güncelleyebilir ve değişiklikleri kaydetek için Save Changes butonu ile kaydedebilirsiniz. Ya da satır üzerinde sağ click yapıp remove row ile kaydı silebilirsiniz.
